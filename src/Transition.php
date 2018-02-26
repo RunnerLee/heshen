@@ -89,7 +89,7 @@ class Transition
             return false;
         }
 
-        if (!is_null($this->checker) && call_user_func_array($this->checker, [$stateful, $parameters])) {
+        if (!is_null($this->checker) && !call_user_func_array($this->checker, [$stateful, $parameters])) {
             return false;
         }
 

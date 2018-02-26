@@ -15,6 +15,6 @@ class Str
      */
     public static function studly($string): string
     {
-        return str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $string)));
+        return str_replace(' ', '', lcfirst(ucwords(str_replace(['-', '_'], ' ', $string))));
     }
 }
