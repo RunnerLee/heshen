@@ -1,0 +1,24 @@
+{
+    "name": "runner/heshen",
+    "description": "finite state machine",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "RunnerLee",
+            "email": "runnerleer@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/options-resolver": "^4.0",
+        "symfony/event-dispatcher": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Runner\\Heshen\\": "src"
+        }
+    }
+}
