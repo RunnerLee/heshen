@@ -17,5 +17,5 @@ final class StateEvents
 
     const PRE_TRANSITION = 'pre_transition';
 
-    const POST_TRANSITION  = 'post_transition';
+    const POST_TRANSITION = 'post_transition';
 }

@@ -7,9 +7,6 @@
 
 namespace Runner\Heshen\Testing;
 
-use Runner\Heshen\Blueprint;
-
 class BlueprintTest extends \PHPUnit_Framework_TestCase
 {
-
 }

@@ -11,7 +11,6 @@ use Runner\Heshen\Support\Str;
 
 class StrTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testStudly()
     {
         $this->assertSame('prePost', Str::studly('pre_post'));

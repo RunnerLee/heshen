@@ -8,13 +8,13 @@
 namespace Runner\Heshen;
 
 use Closure;
+use Runner\Heshen\Event\Event;
 use Runner\Heshen\Exceptions\LogicException;
 use Runner\Heshen\Exceptions\StateNotFoundException;
 use Runner\Heshen\Exceptions\TransitionNotFoundException;
 use Runner\Heshen\Support\StateEvents;
 use Runner\Heshen\Support\Str;
 use Symfony\Component\EventDispatcher\EventDispatcher;
-use Runner\Heshen\Event\Event;
 
 class Blueprint
 {
@@ -50,6 +50,7 @@ class Blueprint
 
     /**
      * @param $name
+     *
      * @return Transition
      */
     public function getTransition(string $name): Transition
@@ -63,6 +64,7 @@ class Blueprint
 
     /**
      * @param $name
+     *
      * @return State
      */
     public function getState(string $name): State
@@ -84,9 +86,10 @@ class Blueprint
 
     /**
      * @param string $name
+     *
      * @return Blueprint
      */
-    protected function setName(string $name): Blueprint
+    protected function setName(string $name): self
     {
         $this->name = $name;
 
@@ -96,9 +99,10 @@ class Blueprint
     /**
      * @param string $name
      * @param string $type
+     *
      * @return Blueprint
      */
-    protected function addState(string $name, string $type): Blueprint
+    protected function addState(string $name, string $type): self
     {
         $this->states[$name] = new State($name, $type);
 
@@ -109,10 +113,11 @@ class Blueprint
      * @param string $name
      * @param string $from
      * @param string $to
-     * @param null $checker
+     * @param null   $checker
+     *
      * @return $this
      */
-    protected function addTransition(string $name, string $from, string $to, $checker = null): Blueprint
+    protected function addTransition(string $name, string $from, string $to, $checker = null): self
     {
         $this->transitions[$name] = new Transition(
             $name,
@@ -126,14 +131,14 @@ class Blueprint
 
         if (method_exists($this, $preMethod)) {
             $this->dispatcher->addListener(
-                StateEvents::PRE_TRANSITION . $name,
+                StateEvents::PRE_TRANSITION.$name,
                 $this->eventListener($preMethod)
             );
         }
 
         if (method_exists($this, $postMethod)) {
             $this->dispatcher->addListener(
-                StateEvents::POST_TRANSITION . $name,
+                StateEvents::POST_TRANSITION.$name,
                 $this->eventListener($postMethod)
             );
         }
@@ -143,6 +148,7 @@ class Blueprint
 
     /**
      * @param $method
+     *
      * @return Closure
      */
     protected function eventListener($method): Closure

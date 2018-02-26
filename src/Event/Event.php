@@ -12,7 +12,6 @@ use Symfony\Component\EventDispatcher\Event as BaseEvent;
 
 class Event extends BaseEvent
 {
-
     /**
      * @var StatefulInterface
      */
@@ -25,8 +24,9 @@ class Event extends BaseEvent
 
     /**
      * Event constructor.
+     *
      * @param StatefulInterface $stateful
-     * @param array $parameters
+     * @param array             $parameters
      */
     public function __construct(StatefulInterface $stateful, array $parameters = [])
     {
