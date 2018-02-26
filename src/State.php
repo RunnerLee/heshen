@@ -27,6 +27,7 @@ class State
 
     /**
      * State constructor.
+     *
      * @param string $name
      * @param string $type
      */

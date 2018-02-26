@@ -11,7 +11,6 @@ use Runner\Heshen\State;
 
 class StateTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testIsInitial()
     {
         $state = new State('a', State::TYPE_INITIAL);
@@ -30,7 +29,6 @@ class StateTest extends \PHPUnit_Framework_TestCase
 
     public function testIsFinal()
     {
-
         $state = new State('a', State::TYPE_FINAL);
         $this->assertSame(false, $state->isInitial());
         $this->assertSame(false, $state->isNormal());

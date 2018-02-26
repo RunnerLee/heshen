@@ -13,7 +13,6 @@ use Runner\Heshen\Transition;
 
 class TransitionTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testGetState()
     {
         $transition = new Transition(
@@ -35,8 +34,7 @@ class TransitionTest extends \PHPUnit_Framework_TestCase
             new State('b', State::TYPE_NORMAL)
         );
 
-        $stateful = new class implements StatefulInterface {
-
+        $stateful = new class() implements StatefulInterface {
             protected $state = 'a';
 
             public function getState(): string
@@ -63,6 +61,7 @@ class TransitionTest extends \PHPUnit_Framework_TestCase
                 if (!isset($parameters['random'])) {
                     return false;
                 }
+
                 return $parameters['random'] > 5;
             }
         );

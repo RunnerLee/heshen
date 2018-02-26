@@ -11,6 +11,7 @@ class Str
 {
     /**
      * @param $string
+     *
      * @return string
      */
     public static function studly($string): string

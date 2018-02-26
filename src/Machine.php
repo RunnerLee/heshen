@@ -14,7 +14,6 @@ use Runner\Heshen\Support\StateEvents;
 
 class Machine
 {
-
     /**
      * @var StatefulInterface
      */
@@ -27,8 +26,9 @@ class Machine
 
     /**
      * Machine constructor.
+     *
      * @param StatefulInterface $stateful
-     * @param Blueprint $blueprint
+     * @param Blueprint         $blueprint
      */
     public function __construct(StatefulInterface $stateful, Blueprint $blueprint)
     {
@@ -49,6 +49,7 @@ class Machine
     /**
      * @param $transitionName
      * @param array $parameters
+     *
      * @return bool
      */
     public function can($transitionName, array $parameters = []): bool
@@ -74,13 +75,13 @@ class Machine
             ));
         }
 
-        $this->dispatchEvent(StateEvents::PRE_TRANSITION . $transitionName, $parameters);
+        $this->dispatchEvent(StateEvents::PRE_TRANSITION.$transitionName, $parameters);
 
         $transition = $this->blueprint->getTransition($transitionName);
 
         $this->stateful->setState($transition->getToState()->getName());
 
-        $this->dispatchEvent(StateEvents::POST_TRANSITION . $transitionName, $parameters);
+        $this->dispatchEvent(StateEvents::POST_TRANSITION.$transitionName, $parameters);
     }
 
     /**

@@ -23,6 +23,7 @@ class Factory
 
     /**
      * Factory constructor.
+     *
      * @param array $loader
      */
     public function __construct(array $loader)
@@ -32,6 +33,7 @@ class Factory
 
     /**
      * @param StatefulInterface $stateful
+     *
      * @return Machine
      */
     public function make(StatefulInterface $stateful): Machine
@@ -39,7 +41,7 @@ class Factory
         $blueprint = $this->loader[get_class($stateful)];
 
         if (!array_key_exists($blueprint, $this->blueprints)) {
-            $this->blueprints[$blueprint] = new $blueprint;
+            $this->blueprints[$blueprint] = new $blueprint();
         }
 
         return new Machine($stateful, $this->blueprints[$blueprint]);
