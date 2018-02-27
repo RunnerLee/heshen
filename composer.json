@@ -10,7 +10,6 @@
         }
     ],
     "require": {
-        "symfony/options-resolver": "^4.0",
         "symfony/event-dispatcher": "^4.0"
     },
     "require-dev": {

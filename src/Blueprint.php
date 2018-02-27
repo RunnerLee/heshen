@@ -46,6 +46,8 @@ class Blueprint
         $this->dispatcher = new EventDispatcher();
 
         $this->configure();
+
+        method_exists($this, 'postInitial') && $this->eventListener('postInitial');
     }
 
     /**
