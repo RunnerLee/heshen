@@ -23,6 +23,7 @@ class BlueprintTest extends \PHPUnit_Framework_TestCase
                 $this->addState('a', State::TYPE_INITIAL);
                 $this->addState('b', State::TYPE_NORMAL);
                 $this->addState('c', State::TYPE_FINAL);
+                $this->addState('d', State::TYPE_FINAL);
 
                 $this->addTransition('one', 'a', 'b');
                 $this->addTransition('two', 'b', 'c');
