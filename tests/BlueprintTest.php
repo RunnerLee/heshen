@@ -8,11 +8,16 @@
 namespace Runner\Heshen\Testing;
 
 use Runner\Heshen\Blueprint;
+use Runner\Heshen\Contracts\StatefulInterface;
 use Runner\Heshen\State;
+use Runner\Heshen\Support\StateEvents;
 
 class BlueprintTest extends \PHPUnit_Framework_TestCase
 {
 
+    /**
+     * @var Blueprint
+     */
     protected $blueprint;
 
     public function setUp()
@@ -30,25 +35,45 @@ class BlueprintTest extends \PHPUnit_Framework_TestCase
                 $this->addTransition('three', 'c', 'd');
             }
 
-            protected function initial()
+            protected function preOne(StatefulInterface $stateful, array $parameters)
             {
-
+            }
+            protected function postOne(StatefulInterface $stateful, array $parameters)
+            {
             }
         };
     }
 
-    public function testGetTransition()
+    public function testGetTransitionAndGetState()
     {
-
-    }
-
-    public function testGetState()
-    {
-
+        $transition = $this->blueprint->getTransition('one');
+        $this->assertSame(
+            $this->blueprint->getState('a'),
+            $transition->getFromState()
+        );
+        $this->assertSame(
+            $this->blueprint->getState('b'),
+            $transition->getToState()
+        );
     }
 
     public function testGetDispatcher()
     {
-
+        $this->assertSame(
+            true,
+            $this->blueprint->getDispatcher()->hasListeners(StateEvents::PRE_TRANSITION.'one')
+        );
+        $this->assertSame(
+            true,
+            $this->blueprint->getDispatcher()->hasListeners(StateEvents::POST_TRANSITION.'one')
+        );
+        $this->assertSame(
+            false,
+            $this->blueprint->getDispatcher()->hasListeners(StateEvents::PRE_TRANSITION.'two')
+        );
+        $this->assertSame(
+            false,
+            $this->blueprint->getDispatcher()->hasListeners(StateEvents::POST_TRANSITION.'two')
+        );
     }
 }

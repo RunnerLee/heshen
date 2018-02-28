@@ -34,8 +34,6 @@ class Machine
     {
         $this->stateful = $stateful;
         $this->blueprint = $blueprint;
-
-        $this->initial();
     }
 
     /**
@@ -82,18 +80,6 @@ class Machine
         $this->stateful->setState($transition->getToState()->getName());
 
         $this->dispatchEvent(StateEvents::POST_TRANSITION.$transitionName, $parameters);
-    }
-
-    /**
-     * @return void
-     */
-    protected function initial(): void
-    {
-        $state = $this->blueprint->getState($this->stateful->getState());
-
-        if ($state->isInitial()) {
-            $this->dispatchEvent(StateEvents::INITIAL);
-        }
     }
 
     /**
