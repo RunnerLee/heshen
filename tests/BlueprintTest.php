@@ -14,7 +14,6 @@ use Runner\Heshen\Support\StateEvents;
 
 class BlueprintTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @var Blueprint
      */
@@ -22,7 +21,7 @@ class BlueprintTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->blueprint = new class extends Blueprint {
+        $this->blueprint = new class() extends Blueprint {
             protected function configure(): void
             {
                 $this->addState('a', State::TYPE_INITIAL);
@@ -38,6 +37,7 @@ class BlueprintTest extends \PHPUnit_Framework_TestCase
             protected function preOne(StatefulInterface $stateful, array $parameters)
             {
             }
+
             protected function postOne(StatefulInterface $stateful, array $parameters)
             {
             }
