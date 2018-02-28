@@ -83,6 +83,14 @@ class Machine
     }
 
     /**
+     * @return Blueprint
+     */
+    public function getBlueprint(): Blueprint
+    {
+        return $this->blueprint;
+    }
+
+    /**
      * @param $event
      * @param array $parameters
      */
