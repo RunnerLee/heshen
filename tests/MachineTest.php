@@ -14,7 +14,6 @@ use Runner\Heshen\State;
 
 class MachineTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @var Machine
      */
@@ -22,13 +21,9 @@ class MachineTest extends \PHPUnit_Framework_TestCase
 
     protected $object;
 
-    /**
-     *
-     */
     public function setUp()
     {
-        $stateful = new class implements StatefulInterface {
-
+        $stateful = new class() implements StatefulInterface {
             protected $state = 'a';
 
             protected $demo = 1;
@@ -54,8 +49,7 @@ class MachineTest extends \PHPUnit_Framework_TestCase
             }
         };
 
-        $blueprint = new class extends Blueprint {
-
+        $blueprint = new class() extends Blueprint {
             protected function configure(): void
             {
                 $this->addState('a', State::TYPE_INITIAL);
@@ -72,6 +66,7 @@ class MachineTest extends \PHPUnit_Framework_TestCase
             {
                 $stateful->addDemo(1);
             }
+
             protected function postOne(StatefulInterface $stateful, array $parameters)
             {
                 $stateful->addDemo(2);
@@ -102,6 +97,6 @@ class MachineTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(true, $this->machine->can('two'));
         $this->assertSame(false, $this->machine->can('three'));
 
-        $this>self::assertSame(4, $this->object->getDemo());
+        $this > self::assertSame(4, $this->object->getDemo());
     }
 }
