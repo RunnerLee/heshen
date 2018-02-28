@@ -11,7 +11,6 @@ use Runner\Heshen\Contracts\StatefulInterface;
 
 class BetaStateful implements StatefulInterface
 {
-
     public function getState(): string
     {
         // TODO: Implement getState() method.
