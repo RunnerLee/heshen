@@ -97,6 +97,6 @@ class MachineTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(true, $this->machine->can('two'));
         $this->assertSame(false, $this->machine->can('three'));
 
-        $this > self::assertSame(4, $this->object->getDemo());
+        $this->assertSame(4, $this->object->getDemo());
     }
 }
