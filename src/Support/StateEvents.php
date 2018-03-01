@@ -9,10 +9,6 @@ namespace Runner\Heshen\Support;
 
 final class StateEvents
 {
-    const PRE_FINAL = 'pre_final';
-
-    const POST_FINAL = 'post_final';
-
     const PRE_TRANSITION = 'pre_transition';
 
     const POST_TRANSITION = 'post_transition';
