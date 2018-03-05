@@ -20,7 +20,7 @@ class Event extends BaseEvent
     /**
      * @var array
      */
-    protected $parameters = [];
+    protected $parameters;
 
     /**
      * Event constructor.
@@ -31,6 +31,7 @@ class Event extends BaseEvent
     public function __construct(StatefulInterface $stateful, array $parameters = [])
     {
         $this->stateful = $stateful;
+        $this->parameters = $parameters;
     }
 
     /**
