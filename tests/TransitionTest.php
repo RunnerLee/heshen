@@ -20,8 +20,9 @@ class TransitionTest extends \PHPUnit_Framework_TestCase
             new State('a', State::TYPE_INITIAL),
             new State('b', State::TYPE_NORMAL)
         );
-        $this->assertSame('a', $transition->getFromState()->getName());
-        $this->assertSame(true, $transition->getFromState()->isInitial());
+
+        $this->assertSame('a', $transition->getFromStates()[0]->getName());
+        $this->assertSame(true, $transition->getFromStates()[0]->isInitial());
         $this->assertSame('b', $transition->getToState()->getName());
         $this->assertSame(true, $transition->getToState()->isNormal());
     }

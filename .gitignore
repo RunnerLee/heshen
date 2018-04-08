@@ -3,3 +3,4 @@ vendor
 .idea
 composer.lock
 example
+.php_cs.cache

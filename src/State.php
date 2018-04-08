@@ -58,7 +58,7 @@ class State
      */
     public function isInitial(): bool
     {
-        return $this->type === self::TYPE_INITIAL;
+        return self::TYPE_INITIAL === $this->type;
     }
 
     /**
@@ -66,7 +66,7 @@ class State
      */
     public function isNormal(): bool
     {
-        return $this->type === self::TYPE_NORMAL;
+        return self::TYPE_NORMAL === $this->type;
     }
 
     /**
@@ -74,6 +74,6 @@ class State
      */
     public function isFinal(): bool
     {
-        return $this->type === self::TYPE_FINAL;
+        return self::TYPE_FINAL === $this->type;
     }
 }

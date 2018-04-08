@@ -110,18 +110,22 @@ class Blueprint
     }
 
     /**
-     * @param string $name
-     * @param string $from
-     * @param string $to
-     * @param null   $checker
+     * @param string       $name
+     * @param string|array $from
+     * @param string       $to
+     * @param null         $checker
      *
      * @return $this
      */
-    protected function addTransition(string $name, string $from, string $to, $checker = null): self
+    protected function addTransition(string $name, $from, string $to, $checker = null): self
     {
+        $from = (array) $from;
+        $fromStates = array_map(function ($state) {
+            return $this->getState($state);
+        }, $from);
         $this->transitions[$name] = new Transition(
             $name,
-            $this->getState($from),
+            $fromStates,
             $this->getState($to),
             $checker
         );
@@ -158,9 +162,6 @@ class Blueprint
         };
     }
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         throw new LogicException('you must overwrite the configure method in the concrete blueprint class');

@@ -49,7 +49,7 @@ class BlueprintTest extends \PHPUnit_Framework_TestCase
         $transition = $this->blueprint->getTransition('one');
         $this->assertSame(
             $this->blueprint->getState('a'),
-            $transition->getFromState()
+            $transition->getFromStates()[0]
         );
         $this->assertSame(
             $this->blueprint->getState('b'),

@@ -17,9 +17,9 @@ class Transition
     protected $name;
 
     /**
-     * @var State
+     * @var State[]
      */
-    protected $fromState;
+    protected $fromStates;
 
     /**
      * @var State
@@ -34,15 +34,15 @@ class Transition
     /**
      * Transition constructor.
      *
-     * @param string $name
-     * @param State  $from
-     * @param State  $to
-     * @param null   $checker
+     * @param string      $name
+     * @param array|State $from
+     * @param State       $to
+     * @param null        $checker
      */
-    public function __construct(string $name, State $from, State $to, $checker = null)
+    public function __construct(string $name, $from, State $to, $checker = null)
     {
         $this->name = $name;
-        $this->fromState = $from;
+        $this->fromStates = !is_array($from) ? [$from] : $from;
         $this->toState = $to;
         $this->checker = $checker;
     }
@@ -56,11 +56,11 @@ class Transition
     }
 
     /**
-     * @return State
+     * @return State[]
      */
-    public function getFromState(): State
+    public function getFromStates(): array
     {
-        return $this->fromState;
+        return $this->fromStates;
     }
 
     /**
@@ -87,14 +87,16 @@ class Transition
      */
     public function can(StatefulInterface $stateful, array $parameters = []): bool
     {
-        if ($stateful->getState() !== $this->fromState->getName()) {
-            return false;
+        foreach ($this->fromStates as $state) {
+            if ($state->getName() === $stateful->getState()) {
+                if (!is_null($this->checker) && !(bool) call_user_func($this->checker, $stateful, $parameters)) {
+                    return false;
+                }
+
+                return true;
+            }
         }
 
-        if (!is_null($this->checker) && !(bool) call_user_func_array($this->checker, [$stateful, $parameters])) {
-            return false;
-        }
-
-        return true;
+        return false;
     }
 }
