@@ -113,3 +113,6 @@ $machine = $factory->make($document);
 
 var_dump($machine->can('one')); // output: bool(true)
 ```
+
+### Tips
+在实现 `StatefulInterface::setState()` 时, 如有需要, 应当使用锁避免冲突.
