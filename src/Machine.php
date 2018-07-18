@@ -10,6 +10,7 @@ namespace Runner\Heshen;
 use Runner\Heshen\Contracts\StatefulInterface;
 use Runner\Heshen\Event\Event;
 use Runner\Heshen\Exceptions\LogicException;
+use Runner\Heshen\Exceptions\SetStateFailedException;
 use Runner\Heshen\Support\StateEvents;
 
 class Machine
@@ -78,6 +79,14 @@ class Machine
         $transition = $this->blueprint->getTransition($transitionName);
 
         $this->stateful->setState($transition->getToState()->getName());
+
+        if ($this->stateful->getState() !== $transition->getToState()->getName()) {
+            throw new SetStateFailedException(sprintf(
+                'Failed to set the "%s" state for object "%s"',
+                $transition->getToState()->getName(),
+                get_class($this->stateful)
+            ));
+        }
 
         $this->dispatchEvent(StateEvents::POST_TRANSITION.$transitionName, $parameters);
     }
