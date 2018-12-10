@@ -1,13 +1,28 @@
+tools:
+  # external_code_coverage: true
+  php_mess_detector: true
+  php_code_sniffer: true
+  sensiolabs_security_checker: true
+  # php_code_coverage: true
+  php_pdepend: true
+  php_loc:
+    enabled: true
+    excluded_dirs: [tests, example, vendor]
+
+filter:
+  excluded_paths:
+  - 'tests/*'
+
 build:
   environment:
     php:
       version:
         - 7.1
         - 7.2
-tests:
-  override:
-    -
-      command: vendor/bin/phpunit --coverage-clover=coverage.clover
-      coverage:
-        file: coverage.clover
-        format: php-clover
+  tests:
+    override:
+      -
+        command: vendor/bin/phpunit --coverage-clover=coverage.clover
+        coverage:
+          file: coverage.clover
+          format: php-clover
