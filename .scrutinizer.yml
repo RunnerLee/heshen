@@ -1,6 +1,8 @@
 filter:
   paths: [src/*]
-  excluded_paths: [tests/*, example/*]
+  excluded_paths:
+    - 'tests/*'
+    - 'example/*'
 
 checks:
   php:
@@ -20,5 +22,5 @@ checks:
 
 tools:
   external_code_coverage:
-    timeout: 1020
+    timeout: 600
     runs: 1
