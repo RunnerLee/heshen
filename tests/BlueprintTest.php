@@ -85,7 +85,7 @@ class BlueprintTest extends \PHPUnit_Framework_TestCase
         $this->expectException(LogicException::class);
         $this->expectExceptionMessage('you must overwrite the configure method in the concrete blueprint class');
 
-        new class extends Blueprint {
+        new class() extends Blueprint {
         };
     }
 
