@@ -37,7 +37,7 @@ class Transition
      * @param string      $name
      * @param array|State $from
      * @param State       $to
-     * @param null        $checker
+     * @param callable    $checker
      */
     public function __construct(string $name, $from, State $to, $checker = null)
     {
@@ -45,14 +45,6 @@ class Transition
         $this->fromStates = !is_array($from) ? [$from] : $from;
         $this->toState = $to;
         $this->checker = $checker;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
     }
 
     /**
@@ -69,14 +61,6 @@ class Transition
     public function getToState(): State
     {
         return $this->toState;
-    }
-
-    /**
-     * @return callable|null
-     */
-    public function getChecker()
-    {
-        return $this->checker;
     }
 
     /**

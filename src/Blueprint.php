@@ -34,11 +34,6 @@ class Blueprint
     protected $dispatcher;
 
     /**
-     * @var string
-     */
-    protected $name = '';
-
-    /**
      * Blueprint constructor.
      */
     public function __construct()
@@ -82,18 +77,6 @@ class Blueprint
     public function getDispatcher(): EventDispatcher
     {
         return $this->dispatcher;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return Blueprint
-     */
-    protected function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**

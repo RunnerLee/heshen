@@ -9,6 +9,9 @@ namespace Runner\Heshen\Testing;
 
 use Runner\Heshen\Blueprint;
 use Runner\Heshen\Contracts\StatefulInterface;
+use Runner\Heshen\Exceptions\LogicException;
+use Runner\Heshen\Exceptions\StateNotFoundException;
+use Runner\Heshen\Exceptions\TransitionNotFoundException;
 use Runner\Heshen\State;
 use Runner\Heshen\Support\StateEvents;
 
@@ -75,5 +78,27 @@ class BlueprintTest extends \PHPUnit_Framework_TestCase
             false,
             $this->blueprint->getDispatcher()->hasListeners(StateEvents::POST_TRANSITION.'two')
         );
+    }
+
+    public function testDeclareBlueprintWithoutConfigure()
+    {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('you must overwrite the configure method in the concrete blueprint class');
+
+        new class extends Blueprint {};
+    }
+
+    public function testGetNotExistState()
+    {
+        $this->expectException(StateNotFoundException::class);
+
+        $this->blueprint->getState('hello');
+    }
+
+    public function testGetNotExistTransition()
+    {
+        $this->expectException(TransitionNotFoundException::class);
+
+        $this->blueprint->getTransition('world');
     }
 }

@@ -34,4 +34,10 @@ class StateTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(false, $state->isNormal());
         $this->assertSame(true, $state->isFinal());
     }
+
+    public function testGetType()
+    {
+        $state = new State('a', State::TYPE_FINAL);
+        $this->assertSame(State::TYPE_FINAL, $state->getType());
+    }
 }
