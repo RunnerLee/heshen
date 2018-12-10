@@ -1,0 +1,13 @@
+build:
+  environment:
+    php:
+      version:
+        - 7.1
+        - 7.2
+tests:
+  override:
+    -
+      command: vendor/bin/phpunit --coverage-clover=coverage.clover
+      coverage:
+        file: coverage.clover
+        format: php-clover
