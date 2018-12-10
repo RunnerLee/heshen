@@ -1,6 +1,15 @@
-# Heshen 有限状态机
+<h1 align="center">Heshen</h1>
 
-> 年轻的樵夫哟，你掉的是这个金斧头，还是这个银斧头呢?
+<p align="center">Finite-state Machine In PHP</p>
+
+<p align="center">
+<a href="https://travis-ci.org/RunnerLee/heshen"><img src="https://travis-ci.org/RunnerLee/heshen.svg?branch=master" /></a>
+<a href="https://scrutinizer-ci.com/g/RunnerLee/heshen/?branch=master"><img src="https://scrutinizer-ci.com/g/RunnerLee/heshen/badges/coverage.png?b=master" alt="Code Coverage"></a>
+<a href="https://styleci.io/repos/120995512"><img src="https://styleci.io/repos/120995512/shield?branch=master" alt="StyleCI"></a>
+<a href="https://github.com/RunnerLee/heshen"><img src="https://poser.pugx.org/runner/heshen/v/stable" /></a>
+<a href="http://www.php.net/"><img src="https://img.shields.io/badge/php-%3E%3D5.6-8892BF.svg" /></a>
+<a href="https://github.com/RunnerLee/heshen"><img src="https://poser.pugx.org/runner/heshen/license" /></a>
+</p>
 
 ### Features
 - 基于 Stateful 对象绑定 Graph
