@@ -9,12 +9,12 @@ namespace Runner\Heshen;
 
 use Closure;
 use Runner\Heshen\Event\Event;
+use Runner\Heshen\Support\Str;
+use Runner\Heshen\Support\StateEvents;
 use Runner\Heshen\Exceptions\LogicException;
 use Runner\Heshen\Exceptions\StateNotFoundException;
-use Runner\Heshen\Exceptions\TransitionNotFoundException;
-use Runner\Heshen\Support\StateEvents;
-use Runner\Heshen\Support\Str;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Runner\Heshen\Exceptions\TransitionNotFoundException;
 
 class Blueprint
 {
@@ -118,14 +118,14 @@ class Blueprint
 
         if (method_exists($this, $preMethod)) {
             $this->dispatcher->addListener(
-                StateEvents::PRE_TRANSITION.$name,
+                StateEvents::PRE_TRANSITION . $name,
                 $this->eventListener($preMethod)
             );
         }
 
         if (method_exists($this, $postMethod)) {
             $this->dispatcher->addListener(
-                StateEvents::POST_TRANSITION.$name,
+                StateEvents::POST_TRANSITION . $name,
                 $this->eventListener($postMethod)
             );
         }

@@ -7,13 +7,13 @@
 
 namespace Runner\Heshen\Testing;
 
+use Runner\Heshen\State;
 use Runner\Heshen\Blueprint;
-use Runner\Heshen\Contracts\StatefulInterface;
+use Runner\Heshen\Support\StateEvents;
 use Runner\Heshen\Exceptions\LogicException;
+use Runner\Heshen\Contracts\StatefulInterface;
 use Runner\Heshen\Exceptions\StateNotFoundException;
 use Runner\Heshen\Exceptions\TransitionNotFoundException;
-use Runner\Heshen\State;
-use Runner\Heshen\Support\StateEvents;
 
 class BlueprintTest extends \PHPUnit_Framework_TestCase
 {
@@ -64,19 +64,19 @@ class BlueprintTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertSame(
             true,
-            $this->blueprint->getDispatcher()->hasListeners(StateEvents::PRE_TRANSITION.'one')
+            $this->blueprint->getDispatcher()->hasListeners(StateEvents::PRE_TRANSITION . 'one')
         );
         $this->assertSame(
             true,
-            $this->blueprint->getDispatcher()->hasListeners(StateEvents::POST_TRANSITION.'one')
+            $this->blueprint->getDispatcher()->hasListeners(StateEvents::POST_TRANSITION . 'one')
         );
         $this->assertSame(
             false,
-            $this->blueprint->getDispatcher()->hasListeners(StateEvents::PRE_TRANSITION.'two')
+            $this->blueprint->getDispatcher()->hasListeners(StateEvents::PRE_TRANSITION . 'two')
         );
         $this->assertSame(
             false,
-            $this->blueprint->getDispatcher()->hasListeners(StateEvents::POST_TRANSITION.'two')
+            $this->blueprint->getDispatcher()->hasListeners(StateEvents::POST_TRANSITION . 'two')
         );
     }
 

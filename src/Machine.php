@@ -7,11 +7,11 @@
 
 namespace Runner\Heshen;
 
-use Runner\Heshen\Contracts\StatefulInterface;
 use Runner\Heshen\Event\Event;
-use Runner\Heshen\Exceptions\LogicException;
-use Runner\Heshen\Exceptions\SetStateFailedException;
 use Runner\Heshen\Support\StateEvents;
+use Runner\Heshen\Exceptions\LogicException;
+use Runner\Heshen\Contracts\StatefulInterface;
+use Runner\Heshen\Exceptions\SetStateFailedException;
 
 class Machine
 {
@@ -74,7 +74,7 @@ class Machine
             ));
         }
 
-        $this->dispatchEvent(StateEvents::PRE_TRANSITION.$transitionName, $parameters);
+        $this->dispatchEvent(StateEvents::PRE_TRANSITION . $transitionName, $parameters);
 
         $transition = $this->blueprint->getTransition($transitionName);
 
@@ -88,7 +88,7 @@ class Machine
             ));
         }
 
-        $this->dispatchEvent(StateEvents::POST_TRANSITION.$transitionName, $parameters);
+        $this->dispatchEvent(StateEvents::POST_TRANSITION . $transitionName, $parameters);
     }
 
     /**

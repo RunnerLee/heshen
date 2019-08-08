@@ -7,9 +7,9 @@
 
 namespace Runner\Heshen\Testing;
 
-use Runner\Heshen\Contracts\StatefulInterface;
 use Runner\Heshen\State;
 use Runner\Heshen\Transition;
+use Runner\Heshen\Contracts\StatefulInterface;
 
 class TransitionTest extends \PHPUnit_Framework_TestCase
 {

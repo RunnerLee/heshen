@@ -27,7 +27,7 @@ class Transition
     protected $toState;
 
     /**
-     * @var null|callable
+     * @var callable|null
      */
     protected $checker;
 

@@ -1,8 +1,11 @@
 filter:
-  paths: [src/*]
+  paths:
+    - 'src/*'
   excluded_paths:
     - 'tests/*'
     - 'example/*'
+  dependency_paths:
+    - 'vendor/'
 
 checks:
   php:

@@ -7,12 +7,12 @@
 
 namespace Runner\Heshen\Testing;
 
-use Runner\Heshen\Blueprint;
-use Runner\Heshen\Contracts\StatefulInterface;
-use Runner\Heshen\Exceptions\LogicException;
-use Runner\Heshen\Exceptions\SetStateFailedException;
-use Runner\Heshen\Machine;
 use Runner\Heshen\State;
+use Runner\Heshen\Machine;
+use Runner\Heshen\Blueprint;
+use Runner\Heshen\Exceptions\LogicException;
+use Runner\Heshen\Contracts\StatefulInterface;
+use Runner\Heshen\Exceptions\SetStateFailedException;
 
 class MachineTest extends \PHPUnit_Framework_TestCase
 {
